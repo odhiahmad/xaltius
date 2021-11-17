@@ -1,5 +1,5 @@
 import { memo, ComponentType } from "react";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import { Public, Private } from "./routes";
 import { NotFound } from "./pages";
 import { connect, useDispatch } from "react-redux";
@@ -23,7 +23,7 @@ function App({ isLogin = false }) {
     dispatch(login());
   }
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         {!isLogin &&
           Public.map(({ key, path, component }) => (
@@ -35,7 +35,7 @@ function App({ isLogin = false }) {
           ))}
         <Route path="*" component={NotFound} />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

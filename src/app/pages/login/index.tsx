@@ -4,6 +4,7 @@ import { login } from "services/login";
 import { FormLogin } from "./loginform";
 import { setToken } from "utils/cookie";
 import { DefaultLayout } from "app/components/layout";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const router = useRouter();
@@ -33,6 +34,10 @@ export const Login = () => {
             </div>
 
             <FormLogin />
+            <p className="mt-4 text-center text-sm text-gray-600">
+              Did you have an account ?{" "}
+              <Link to={"registration"}>Registration Here</Link>
+            </p>
           </div>
         </div>
       </main>
