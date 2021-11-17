@@ -10,8 +10,7 @@ export interface PropTypes {
     label: string | number;
     value: string;
   }[];
-  label?: string;
-  title?: string | undefined;
+
   errorMsg?: string;
   isSelect?: boolean;
   type?: "text" | "password" | "number";
@@ -39,6 +38,7 @@ export function Select({
   const onBeforeChange = (event: any) => {
     setValue(event.target.value);
     onChange(event, event.target.value);
+    console.log(value);
   };
   const onBeforeClick = () => {
     onClick();
@@ -56,25 +56,22 @@ export function Select({
       : {};
   return (
     <>
-      <div className="flex flex-col mb-4">
+      <div className="flex flex-col">
+        {error && <span>{errorMsg}</span>}
         <select
           id={id}
           name={name}
-          onChange={(e) => {
-            e.persist();
-            onChange(e, e.target.value);
-          }}
-          {...valueProps}
           onClick={onBeforeClick}
           onKeyUp={onBlur}
-          className="flex-1 w-full mt-4 text-gray-700 py-2 px-4 border border-gray-300 bg-white rounded shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+          value={value}
+          onChange={onBeforeChange}
+          className="flex-1 w-full mb-4 text-gray-700 py-2 px-4 border border-gray-300 bg-white rounded shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+          {...valueProps}
         >
           {options.map((pilihan) => (
             <option value={pilihan.value}>{pilihan.label}</option>
           ))}
         </select>
-
-        {error && <span>{errorMsg}</span>}
       </div>
     </>
   );

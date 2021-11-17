@@ -22,7 +22,8 @@ export function setUpAxios() {
 }
 
 export default function APIKit(config: AxiosRequestConfig) {
-  const baseURL = "http://localhost:8080/api";
+  const baseURL =
+    "https://newsapi.org/v2/everything?q=tesla&from=2021-10-16&sortBy=publishedAt&apiKey=a881a187ec4048efb0cae4437293c67b";
 
   const headers = {
     ...initialHeader,

@@ -49,6 +49,7 @@ export function Navbar({
   const navigation = [
     { name: "Login", key: "login", current: true },
     { name: "Registration", key: "registration", current: false },
+    { name: "Berita", key: "berita", current: false },
   ];
   const userNavigation = [
     { name: "Your Profile", href: "#" },
