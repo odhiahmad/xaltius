@@ -21,6 +21,11 @@ const loginSchema = Yup.object().shape({
 
 const dataOption = [
   {
+    value: "",
+    induk: "",
+    label: "Pilih Provinsi",
+  },
+  {
     value: "1",
     label: "Sumatera Barat",
   },
@@ -41,31 +46,11 @@ const jenisKelaminOpt = [
   },
 ];
 
-const dataOptionKota = [
+const dataOptionKota2 = [
   {
-    value: "1",
-    induk: "1",
-    label: "Padang",
-  },
-  {
-    value: "2",
-    induk: "1",
-    label: "Bukittinggi",
-  },
-  {
-    value: "3",
-    induk: "1",
-    label: "Padang Panjang",
-  },
-  {
-    value: "4",
-    induk: "1",
-    label: "Solok Selatan",
-  },
-  {
-    value: "5",
-    induk: "1",
-    label: "Pesisir Selatan",
+    value: "",
+    induk: "",
+    label: "Pilih Kota",
   },
   {
     value: "1",
@@ -93,14 +78,47 @@ const dataOptionKota = [
     label: "Bangkinang",
   },
 ];
+const dataOptionKota1 = [
+  {
+    value: "",
+    induk: "",
+    label: "Pilih Kota",
+  },
+  {
+    value: "1",
+    induk: "1",
+    label: "Padang",
+  },
+  {
+    value: "2",
+    induk: "1",
+    label: "Bukittinggi",
+  },
+  {
+    value: "3",
+    induk: "1",
+    label: "Padang Panjang",
+  },
+  {
+    value: "4",
+    induk: "1",
+    label: "Solok Selatan",
+  },
+  {
+    value: "5",
+    induk: "1",
+    label: "Pesisir Selatan",
+  },
+];
 export function FormRegistration() {
   const [loading, setLoading] = React.useState(false);
+  const [optionKota, setOptionKota] = React.useState<any>([]);
 
   const onSubmit = async (values: any) => {
     console.log(values);
     try {
       setLoading(true);
-      // setToken("tes");
+      alert("selamat anda sudah terdaftar " + values.email);
       setLoading(false);
     } catch (error) {
       // setToken("test");
@@ -170,26 +188,40 @@ export function FormRegistration() {
           }
           errorMsg={formik.errors.password}
         />
+
         <Select
           id="provinsi-input"
           name="provinsi"
+          value={formik.values.provinsi}
+          onChange={(value) => {
+            if (value.value === "1") {
+              setOptionKota(dataOptionKota1);
+            } else {
+              setOptionKota(dataOptionKota2);
+            }
+            formik.setFieldValue("provinsi", value.value);
+          }}
           options={dataOption}
-          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={
             formik.errors.provinsi !== undefined && formik.touched.provinsi
           }
           errorMsg={formik.errors.provinsi}
         />
-        <Select
-          id="kota-input"
-          name="kota"
-          options={dataOptionKota}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.errors.kota !== undefined && formik.touched.kota}
-          errorMsg={formik.errors.kota}
-        />
+        {optionKota.length === 0 ? (
+          <></>
+        ) : (
+          <Select
+            id="kota-input"
+            name="kota"
+            value={formik.values.kota}
+            options={optionKota}
+            onBlur={formik.handleBlur}
+            error={formik.errors.kota !== undefined && formik.touched.kota}
+            errorMsg={formik.errors.kota}
+            onChange={(value) => formik.setFieldValue("kota", value.value)}
+          />
+        )}
         <Radio
           id="jenis-kelamin-input"
           name="jenisKelamin"
