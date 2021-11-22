@@ -22,8 +22,7 @@ export function setUpAxios() {
 }
 
 export default function APIKit(config: AxiosRequestConfig) {
-  const baseURL =
-    "https://newsapi.org/v2/everything?q=tesla&from=2021-10-16&sortBy=publishedAt&apiKey=a881a187ec4048efb0cae4437293c67b";
+  const baseURL = "http://52.221.251.68:8084/kanban/list";
 
   const headers = {
     ...initialHeader,
@@ -34,7 +33,7 @@ export default function APIKit(config: AxiosRequestConfig) {
 
   const finalConfig = {
     baseURL,
-    headers,
+    // headers,
     ...config,
   };
   // RETURN AXIOS

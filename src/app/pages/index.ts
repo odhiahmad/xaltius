@@ -1,7 +1,6 @@
-import Home from "./home/lazyload";
-
+import Tasks from "./tasks/lazyload";
+import Files from "./files/lazyload";
+import Activity from "./activity/lazyload";
+import Calendar from "./calendar/lazyload";
 import NotFound from "./notfound/lazyload";
-import Login from "./login/lazyload";
-import Registration from "./registration/lazyload";
-import Berita from "./berita/lazyload";
-export { Login, Home, NotFound, Registration, Berita };
+export { Tasks, Files, Activity, Calendar, NotFound };

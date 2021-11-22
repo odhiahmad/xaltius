@@ -1,29 +1,35 @@
-import { Login, Registration, Berita } from "../pages";
+import { Tasks, Files, Activity, Calendar } from "../pages";
 
 const routes = [
   {
-    key: "page-login",
-    name: "page-login",
-    component: Login,
+    key: "tasks",
+    name: "tasks",
+    component: Tasks,
     path: "/",
   },
   {
-    key: "page-login",
-    name: "page-login",
-    component: Login,
-    path: "/login",
+    key: "tasks",
+    name: "tasks",
+    component: Tasks,
+    path: "/tasks",
   },
   {
-    key: "page-registration",
-    name: "page-registration",
-    component: Registration,
-    path: "/registration",
+    key: "files",
+    name: "files",
+    component: Files,
+    path: "/files",
   },
   {
-    key: "page-berita",
-    name: "page-berita",
-    component: Berita,
-    path: "/berita",
+    key: "activity",
+    name: "activity",
+    component: Activity,
+    path: "/activity",
+  },
+  {
+    key: "calendar",
+    name: "calendar",
+    component: Calendar,
+    path: "/calendar",
   },
 ];
 

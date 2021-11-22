@@ -1,6 +1,6 @@
 import APIKit from "./index";
 
-export const berita = async () => {
+export const tasks = async () => {
   try {
     const response = await APIKit({
       method: "GET",

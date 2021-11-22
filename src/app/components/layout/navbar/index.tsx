@@ -47,9 +47,10 @@ export function Navbar({
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   };
   const navigation = [
-    { name: "Login", key: "login", current: true },
-    { name: "Registration", key: "registration", current: false },
-    { name: "Berita", key: "berita", current: false },
+    { name: "Tasks", key: "tasks", current: true },
+    { name: "Activity", key: "activity", current: false },
+    { name: "Calendar", key: "calendar", current: false },
+    { name: "Files", key: "files", current: false },
   ];
   const userNavigation = [
     { name: "Your Profile", href: "#" },
@@ -57,9 +58,9 @@ export function Navbar({
     { name: "Sign out", href: "#" },
   ];
 
-  const aktifClass = "bg-gray-900 text-white";
+  const aktifClass = "bg-gray-900 text-white mr-4";
   const nonAktifClass =
-    "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
+    "text-black-300 hover:bg-gray-900 mr-4 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
 
   function classNames(...classes: any) {
     return classes.filter(Boolean).join(" ");
@@ -67,22 +68,23 @@ export function Navbar({
 
   return (
     <div>
-      <Disclosure as="nav" className="bg-gray-800">
+      <header className="bg-white-800">
+        <div className="max-w-7xl mx-auto py-2 mt-6 px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center">
+            <div className="flex-shrink-0 grid grid-cols-1 gap-x-2 sm:grid-cols-2">
+              <p className="text-3xl font-bold">Xaltius Board</p>{" "}
+              <MenuIcon className="block h-10 w-6" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+      </header>
+      <Disclosure as="nav" className="bg-white-800">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <img
-                      className="h-8 w-8"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                      alt="Workflow"
-                    />
-                  </div>
-                </div>
-                <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
                     {navigation.map((item, index) =>
                       index === 0 ? (
                         <NavLink
@@ -104,6 +106,9 @@ export function Navbar({
                       )
                     )}
                   </div>
+                </div>
+                <div className="hidden md:block">
+                  <div className="ml-10 flex items-baseline space-x-4"></div>
                 </div>
                 <div className="-mr-2 flex md:hidden">
                   {/* Mobile menu button */}

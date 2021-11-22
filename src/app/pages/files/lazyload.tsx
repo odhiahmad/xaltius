@@ -1,9 +1,9 @@
 import { memo } from "react";
 import { lazyLoad } from "../../../utils/lazyload.config";
 
-const Berita = lazyLoad(
+const Files = lazyLoad(
   () => import("./index"),
-  (module) => module.Berita
+  (module) => module.Files
 );
 
-export default memo(Berita);
+export default memo(Files);

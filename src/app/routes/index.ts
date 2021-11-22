@@ -1,7 +1,3 @@
-import Public from './public'
-import Private from './private'
+import Public from "./public";
 
-export {
-    Public,
-    Private
-}
+export { Public };
